@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import Cart from './components/Cart';
+import Search from './components/Search';
 import api from './services/api';
 import PokemonList from './components/PokemonList';
 
@@ -53,7 +55,19 @@ function App() {
         <>
         <Navbar />
 
-        <PokemonList pokemons={pokemons} />
+        <Search />
+
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-9 col-12">
+                <PokemonList pokemons={pokemons} />
+              </div>
+              <div className="col-sm-3 col-12">
+                <Cart />
+              </div>
+            </div>
+
+          </div>
       
         </>
       );

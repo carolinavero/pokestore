@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from '../images/pokestore.png';
 
 const Navbar = () => {
     return (
-        <nav className="navbar bg-light">
+        <nav className="navbar">
             <div className="navbar-brand">
-                PokeStore
+                <img src={logo} alt="PokeStore" className="logo" />
             </div>
 
             <div className="navbar-cart">
