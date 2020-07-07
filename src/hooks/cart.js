@@ -4,30 +4,41 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
 
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        const localCart = localStorage.getItem('@pokeStore/items');
+        if(localCart) {
+            return JSON.parse(localCart);
+        }
+        return [];
+    });
+
+    const [totalQuantItems, setTotalQuantItems] = useState(
+        cartItems.reduce((total, pokemon) => total + pokemon.quant, 0)
+    );
+
+    function saveCart (items) {
+        setCartItems(items);
+        setTotalQuantItems(items.reduce(
+            (total, pokemon) => total + pokemon.quant, 0)
+        );
+        localStorage.setItem('@pokeStore/items', JSON.stringify(items));
+    }
 
     function addToCart(item) {
-        console.log("dentro do context..", item);
 
-        console.log("quant do item", item.quant)
-
-        // carrinho vazio
         if(cartItems.length === 0) {
-            setCartItems([item]);
-            console.log("carrinho vazio - item:", item.quant)
+            saveCart([item]);
 
-        // carrinho nao vazio
         } else {
 
-            //verifca se ja existe
             const searchItem = cartItems.find(pokemon => pokemon.name === item.name);
 
-            // adiciona se nao existir - muda pra qtd recebida
             if(!searchItem) {
-                setCartItems([...cartItems, item]);
+                saveCart([...cartItems, item]);
             }
-            // se existir.. 
+
             else {
+                
                 const updatedItems = cartItems.reduce((items, pokemon) => {
                     if(pokemon.name === item.name) {
                         pokemon.quant = item.quant;
@@ -38,16 +49,15 @@ const CartProvider = ({ children }) => {
                     return items;
                 }, []);
 
-                setCartItems(updatedItems);
+                saveCart(updatedItems);
+
             }
         }
-
-        console.log("meu carrinho", cartItems);
 
     }
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, totalQuantItems }}>
             {children}
         </CartContext.Provider>
     )

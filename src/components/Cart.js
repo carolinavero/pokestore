@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ModalCheckout from './Modal';
 
 import { useCart } from '../hooks/cart';
 
@@ -8,17 +9,14 @@ const Cart = () => {
     const { cartItems }  = useCart();
     
     useEffect(() => {
+        
         const totalItems = cartItems.reduce((total, item) => {
             let soma = item.price * item.quant;
             return total + soma;
         }, 0);
         setTotalCartValue(totalItems);
-    }, [cartItems]);
 
-    function handleCheckout() {
-        console.log("checkout!!");
-        alert("Parabéns! Compra realizada.")
-    }
+    }, [cartItems]);
 
     return (
         <>
@@ -27,9 +25,10 @@ const Cart = () => {
             <div className="col-12">
 
                     <h2>Carrinho</h2>
-
+ 
                     <ul>
-                        {   cartItems.length ? 
+                        {   
+                            cartItems.length ? 
                             cartItems.map((pokemon) => (
                                 <li key={pokemon.name}>
                                     <img src={pokemon.image} alt={pokemon.name} />
@@ -43,13 +42,9 @@ const Cart = () => {
                         <li className="total">TOTAL <span>R$ {totalCartValue},00</span></li>
                     </ul>
 
-                    <button 
-                        className="btn btn-success btn-block"
-                        disabled={totalCartValue === 0 ? 'disabled' : ''}
-                        onClick={handleCheckout}
-                    >
-                        Finalizar compra
-                    </button>
+                    {
+                        <ModalCheckout />
+                    }
 
             </div>
         </div>

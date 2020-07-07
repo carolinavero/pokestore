@@ -44,7 +44,7 @@ body {
     justify-content: center;
 }
 
-.navbar-cart a {
+.navbar-cart button {
     font-size: 2rem;
     color: var(--primary-color);
     text-decoration: none;
@@ -52,6 +52,8 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     text-align: center;
+    background-color: transparent;
+    border: none;
 }
 
 /* Pokemon Card */
@@ -68,12 +70,12 @@ body {
 }
 .pokemon-card-header {
     color: var(--primary-color);
+    text-align: center;
 }
 .pokemon-card-header h2 {
     text-transform: capitalize;
     font-weight: 600;
     font-size: 1.3rem;
-    text-align: center;
 }
 .pokemon-card-body {
     background-color: #fff;
@@ -140,4 +142,11 @@ body {
 
 .pagination {
     margin: 2rem 0;
+}
+
+@media(max-width: 600px) {
+
+    .navbar-brand .logo {
+        max-width: 150px;
+    }
 }

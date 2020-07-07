@@ -6,18 +6,17 @@ const PokemonCard = ({ pokemon }) => {
 
     const [ infoPokemon, setInfoPokemon ] = useState({});
     const [ loaded, setLoaded ] = useState(false);
-    const [ price ] = useState(() => {
-        return Math.floor(Math.random() * 90) + 10;
-    });
+    const [ price ] = useState(0);
+   
 
     useEffect(() => {
         async function getInfo() {
-            const info = await api.get(`pokemon/${pokemon.name}`);
+            const info = await api.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
             setInfoPokemon(info.data);
             setLoaded(true);
         }
         getInfo();
-        console.log(pokemon);
+        
     }, [pokemon]);
 
     return (
@@ -25,6 +24,12 @@ const PokemonCard = ({ pokemon }) => {
         <div className="pokemon-card">
             <div className="pokemon-card-header">
                 <h2>{pokemon.name}</h2>
+                {
+                    loaded ? 
+                    infoPokemon.types.map((type, index) =>
+                        <span key={index}>{type.type.name}</span>) : 
+                    '...'
+                }
             </div>
             <div className="pokemon-card-body">
                {
@@ -34,8 +39,8 @@ const PokemonCard = ({ pokemon }) => {
                }
             </div>
             <div className="pokemon-card-footer">
-                <h4>R$ {price},00</h4>   
-                <Counter pokemon={pokemon} info={infoPokemon} price={price} />
+                <h4>R$ {infoPokemon.weight},00</h4>   
+                <Counter pokemon={pokemon} info={infoPokemon} price={infoPokemon.weight} />
             </div>
            
         </div>

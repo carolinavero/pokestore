@@ -2,9 +2,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 
+import { useCart } from '../hooks/cart';
+
 import logo from '../images/pokestore.png';
 
 const Navbar = () => {
+
+    const { totalQuantItems } = useCart();
+    console.log("nav - total quant", totalQuantItems)
 
     return (
 
@@ -17,12 +22,12 @@ const Navbar = () => {
 
                 <div className="navbar-cart">
                     
-                    <a href="#">
+                    <button>
                         <FontAwesomeIcon icon={faTruck} />
                         <span className="badge badge-pill badge-success">
-                            1
+                            {totalQuantItems}
                         </span>
-                    </a>
+                    </button>
                 </div>
 
             </nav>
