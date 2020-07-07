@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const Counter = () => {
+import { useCart } from '../hooks/cart';
 
+const Counter = ({ pokemon, info, price }) => {
+
+    const [count, setCount] = useState(0);
+    const { addToCart } = useCart();
+
+    function handleCountPlus() {
+        setCount(count + 1);
+        handleAddToCart(count + 1);
+    }
+
+    function handleCountMinus() {
+        if (count > 0) setCount(count - 1);
+        handleAddToCart(count - 1);
+    }
+
+    function handleAddToCart(newCount = undefined) {
+
+        console.log("adicionou item no carrinho", count, newCount)
+        const selectedItem = {
+            name: pokemon.name,
+            price: price,
+            image: info.sprites.front_default,
+            quant: newCount !== undefined ? newCount : count
+        }
+        addToCart(selectedItem);
+    }
 
     return (
         <>
@@ -11,23 +37,22 @@ const Counter = () => {
                 
                 <div className="col-3">
                     <button
-                        className="btn btn-secondary"
+                        className="btn btn-primary"
+                        onClick={handleCountMinus}
                     >
                         <FontAwesomeIcon icon={faMinus} />
-
                     </button>
 
                 </div>
                 <div className="col-6">
                     <span>
-                        0
+                        {count}
                     </span>
                 </div>
                 <div className="col-3">
                     <button
-                        className="btn btn-secondary"
-                        /* onClick={() => this.props.onDecrement(this.props.counter)}
-                        disabled={this.props.counter.value === 0 ? "disabled" : ""} */
+                        className="btn btn-primary"
+                        onClick={handleCountPlus}
                     >
                         <FontAwesomeIcon icon={faPlus} />
 
@@ -36,16 +61,7 @@ const Counter = () => {
                 
             </div>
 
-            <div className="row">
-                <div className="col-12">
-                    <button
-                        className="btn btn-success btn-block"
-                    >
-                        <FontAwesomeIcon icon={faCartPlus} />
-                        <span>Adicionar </span>
-                    </button>
-                </div> 
-            </div>
+            
         </>
     );
 }

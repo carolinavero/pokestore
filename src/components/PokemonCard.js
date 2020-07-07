@@ -6,6 +6,9 @@ const PokemonCard = ({ pokemon }) => {
 
     const [ infoPokemon, setInfoPokemon ] = useState({});
     const [ loaded, setLoaded ] = useState(false);
+    const [ price ] = useState(() => {
+        return Math.floor(Math.random() * 90) + 10;
+    });
 
     useEffect(() => {
         async function getInfo() {
@@ -31,8 +34,8 @@ const PokemonCard = ({ pokemon }) => {
                }
             </div>
             <div className="pokemon-card-footer">
-                <h4>R$100,00</h4>   
-                <Counter />
+                <h4>R$ {price},00</h4>   
+                <Counter pokemon={pokemon} info={infoPokemon} price={price} />
             </div>
            
         </div>

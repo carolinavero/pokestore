@@ -3,22 +3,22 @@ import PokemonCard from './PokemonCard';
 
 function PokemonList({ pokemons }) {
 
-        return (
-            <>
+    return (
+        <>
 
-                <div className="row no-gutters">
-                    {
-                        pokemons.map((pokemon, index) =>
-                            <div className="col-3">
-                                <PokemonCard key={index} pokemon={pokemon} />
-                            </div>
-                        )
-                    }
-                    
-                </div>
+            <div className="row no-gutters">
+                {
+                    pokemons.map((pokemon, index) =>
+                        <div key={index}  className="col-12 col-sm-6 col-md-6 col-lg-4">
+                            <PokemonCard pokemon={pokemon} />
+                        </div>
+                    )
+                }
+                
+            </div>
 
-            </>
-        );
+        </>
+    );
     
 }
 

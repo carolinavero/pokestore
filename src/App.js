@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
 import Search from './components/Search';
+
 import api from './services/api';
 import PokemonList from './components/PokemonList';
 
@@ -12,6 +13,7 @@ function App() {
   const [pokemons, setPokemons] = useState([0]);
 
   const [previous, setPrevious] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [next, setNext] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -30,6 +32,7 @@ function App() {
         setCount(result.data.count);
 
         console.log("prev", previous);
+        console.log("current", currentPage);
         console.log("next", next);
         console.log("count", count);
 
@@ -40,6 +43,21 @@ function App() {
       })
 
   }, []);
+
+
+  function handlePreviousPage () {
+    console.log('prev page...');
+    
+  }
+
+  function handleNextPage() {
+    console.log('next page...')
+  }
+
+
+  useEffect(() => {
+    console.log("use effect - link next: ", next)
+  }, [next]);
   
 
   if (error) {
@@ -53,16 +71,29 @@ function App() {
 
       return (
         <>
-        <Navbar />
+        <section  className="header">
+          <Navbar />
+        </section>
 
         <Search />
 
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
-              <div className="col-sm-9 col-12">
+              <div className="col-sm-8 col-12">
                 <PokemonList pokemons={pokemons} />
+
+                <nav aria-label="Pagination">
+                  <ul className="pagination justify-content-center">
+                    <li className="page-item disabled">
+                      <a href="#" className="page-link " onClick={handlePreviousPage} >Anterior</a></li>
+      
+                    <li className="page-item">
+                      <a href="#" className="page-link active" onClick={handleNextPage} >Próximo</a></li>
+                  </ul>
+                </nav>
+
               </div>
-              <div className="col-sm-3 col-12">
+              <div className="col-sm-4 col-12">
                 <Cart />
               </div>
             </div>
