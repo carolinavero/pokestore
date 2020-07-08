@@ -30,7 +30,7 @@ const Cart = () => {
                         {   
                             cartItems.length ? 
                             cartItems.map((pokemon) => (
-                                <li key={pokemon.name}>
+                                <li key={pokemon.name} className="cart-item">
                                     <img src={pokemon.image} alt={pokemon.name} />
                                     {pokemon.name} 
                                     <span>{pokemon.quant} x R$ {pokemon.price},00</span>

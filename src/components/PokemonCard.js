@@ -25,7 +25,9 @@ const PokemonCard = ({ pokemon }) => {
                 {
                     loaded ? 
                     infoPokemon.types.map((type, index) =>
-                        <span key={index}>{type.type.name}</span>) : 
+                        <span key={index} className="pokemon-type">
+                            {type.type.name}
+                        </span>) : 
                     '...'
                 }
             </div>

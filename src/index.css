@@ -1,5 +1,6 @@
 :root {
     --primary-color: #385aa7;
+    --primary-color-light: #e7ebf4;
     --secondary-color: #fecc02;
 
     --dark-color: #333;
@@ -23,14 +24,14 @@ body {
 }
 
 .header {
-    background-color: #e7ebf4;
+    background-color: var(--primary-color-light);
 }
 .btn-primary {
     background-color: var(--primary-color);
 }
 /* Navbar */
 .navbar {
-    background-color: #e7ebf4;
+    background-color: var(--primary-color-light);
     margin-bottom: 3rem;
 }
 .navbar-brand {
@@ -94,7 +95,7 @@ body {
 .pokemon-card-header h2 {
     text-transform: capitalize;
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 .pokemon-card-body {
     background-color: #fff;
@@ -109,10 +110,22 @@ body {
     text-align: center;
 }
 
+.pokemon-type {
+    padding: .3rem;
+    border-radius: var(--border-radius);
+    margin: .3rem;
+    background-color: var(--primary-color-light);
+    color: var(--primary-color);
+    font-size: .65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Cart */
 .cart {
     padding: 1rem;
-    background-color: #e7ebf4;
+    background-color: var(--primary-color-light);
     position: sticky;
     margin-top: 1rem;
     margin-right: 1rem;
@@ -121,6 +134,10 @@ body {
 .cart ul {
     list-style: none;
     padding-left: 0;
+}
+.cart ul li.cart-item {
+    font-size: .9rem;
+    text-transform: capitalize;
 }
 .cart ul li {
     border-bottom: 1px solid var(--border-color);
@@ -140,6 +157,7 @@ body {
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 1rem;
+    font-size: 1rem;
 }
 .cart img {
     max-height: 70px;
