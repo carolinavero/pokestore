@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
-import Search from './components/Search';
 
 import api from './services/api';
 import PokemonList from './components/PokemonList';
@@ -12,8 +11,36 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [pokemons, setPokemons] = useState([0]);
 
-  const [previous, setPrevious] = useState(0);
-  const [next, setNext] = useState(0);
+  const [previous, setPrevious] = useState(null);
+  const [next, setNext] = useState(null);
+
+  const url = 'https://pokeapi.co/api/v2';
+
+  const filterPokemon = (searchTerm) => {
+
+    console.log('serchterm', searchTerm)
+
+    if (!searchTerm) {
+      getInfoFromAPI(`${url}/pokemon`);
+
+    } else {
+
+      api.get(`${url}/pokemon/${searchTerm}`)
+        .then(result => {
+          setPokemons([{
+            name: result.data.name
+          }]);
+          setNext(null);
+          setPrevious(null);
+          
+        })
+  
+        .catch(error => {
+          alert("Pokemon não encontrado!");
+        })
+    }
+
+  };
 
   const getInfoFromAPI = useCallback(uri => {
 
@@ -35,7 +62,7 @@ function App() {
 
   useEffect(() => {
 
-    getInfoFromAPI('https://pokeapi.co/api/v2/pokemon')
+    getInfoFromAPI(`${url}/pokemon`)
 
   }, [getInfoFromAPI]);
 
@@ -52,36 +79,45 @@ function App() {
     return <div>Erro: {error}</div>;
 
   } else if (!isLoaded) {
-    return <div>Carregando...</div>;
+    return <div className="loading-message">Carregando...</div>;
 
   } else {
 
       return (
         <>
         <section  className="header">
-          <Navbar />
+          <Navbar search={filterPokemon}/>
         </section>
 
-        <Search />
-
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
-              <div className="col-sm-8 col-12">
+              <div className="col-xl-9 col-lg-8 col-md-8 col-sm-6 col-12">
                 <PokemonList pokemons={pokemons} />
 
                 <nav aria-label="Pagination">
                   <ul className="pagination justify-content-center">
                     <li className="page-item">
-                      <button className="page-link " onClick={handlePreviousPage}> Anterior</button>
+
+                      {
+                        previous &&
+                        <button className="page-link "
+                                onClick={handlePreviousPage}> Anterior</button>
+                      }
+                    
                     </li>
                     <li className="page-item">
-                      <button className="page-link active" onClick={handleNextPage}> Próximo</button>
+
+                      {
+                        next && 
+                        <button className="page-link active" onClick={handleNextPage}> Próximo</button>
+
+                      }
                     </li>
                   </ul>
                 </nav>
-
+  
               </div>
-              <div className="col-sm-4 col-12">
+              <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
                 <Cart />
               </div>
             </div>

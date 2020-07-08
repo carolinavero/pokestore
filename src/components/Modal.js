@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ModalCheckout = (props) => {
     const [show, setShow] = useState(false);
@@ -20,8 +22,8 @@ const ModalCheckout = (props) => {
 
             <Modal show={show} onHide={handleClose}>
                
-                <Modal.Body>
-
+                <Modal.Body className="modal-body">
+                    <FontAwesomeIcon icon={faCheckCircle} className="modal-icon" />
                     <h3>Parabéns!</h3>
                     <p>Compra realizada com sucesso!</p> 
 
@@ -29,7 +31,7 @@ const ModalCheckout = (props) => {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Fechar
-                </Button>
+                    </Button>
                    
                 </Modal.Footer>
             </Modal>

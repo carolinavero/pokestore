@@ -12,6 +12,16 @@ body {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
 }
+
+.loading-message {
+    text-align: center;
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 .header {
     background-color: #e7ebf4;
 }
@@ -30,6 +40,14 @@ body {
 }
 .navbar-brand .logo {
     max-width: 250px;
+}
+
+.logo-button {
+    background-color: transparent;
+    border: none;
+}
+.logo-button:focus {
+    outline: none;
 }
 
 .navbar-cart span {
@@ -54,6 +72,7 @@ body {
     text-align: center;
     background-color: transparent;
     border: none;
+    outline: none;
 }
 
 /* Pokemon Card */
@@ -96,6 +115,7 @@ body {
     background-color: #e7ebf4;
     position: sticky;
     margin-top: 1rem;
+    margin-right: 1rem;
     border-radius: var(--border-radius);
 }
 .cart ul {
@@ -144,9 +164,22 @@ body {
     margin: 2rem 0;
 }
 
+.modal-body {
+    text-align: center;
+}
+.modal-icon {
+    font-size: 3rem;
+    color: var(--success);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
 @media(max-width: 600px) {
 
     .navbar-brand .logo {
         max-width: 150px;
+    }
+    .cart {
+        margin: 1rem 0 3rem 0;
     }
 }

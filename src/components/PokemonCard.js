@@ -5,9 +5,7 @@ import Counter from './Counter';
 const PokemonCard = ({ pokemon }) => {
 
     const [ infoPokemon, setInfoPokemon ] = useState({});
-    const [ loaded, setLoaded ] = useState(false);
-    const [ price ] = useState(0);
-   
+    const [ loaded, setLoaded ] = useState(false); 
 
     useEffect(() => {
         async function getInfo() {
