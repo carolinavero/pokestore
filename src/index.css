@@ -63,7 +63,7 @@ body {
     justify-content: center;
 }
 
-.navbar-cart button {
+.navbar-cart a {
     font-size: 2rem;
     color: var(--primary-color);
     text-decoration: none;
@@ -163,7 +163,7 @@ body {
     max-height: 70px;
     margin-right: 10px;
 }
-.cart button {
+.cart a {
     font-size: 1.2rem;
 }
 
@@ -195,9 +195,17 @@ body {
 @media(max-width: 600px) {
 
     .navbar-brand .logo {
-        max-width: 150px;
+        max-width: 100%;
     }
+    
     .cart {
         margin: 1rem 0 3rem 0;
+        padding: 1rem .5rem;
+    }
+    .cart img {
+        max-height: 60px;
+    }
+    .cart ul li.cart-item {
+        font-size: .8rem;
     }
 }

@@ -25,19 +25,20 @@ const Navbar = ({ search }) => {
             
                 <div className="row">
 
-                    <div className="col-8">
+                    <div className="col-9 col-sm-8">
                         <Search search={search} />
                     </div>
 
-                    <div className="col-4">
+                    <div className="col-3 col-sm-4">
                         <div className="navbar-cart">
-
-                            <button>
+                            
+                            <a href="#my-cart">
+                              
                                 <FontAwesomeIcon icon={faTruck} />
                                 <span className="badge badge-pill badge-success">
                                     {totalQuantItems}
                                 </span>
-                            </button>
+                            </a>
                         </div>
                     </div>
 

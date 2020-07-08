@@ -24,7 +24,7 @@ const Cart = () => {
         <div className="row cart fixed-top">
             <div className="col-12">
 
-                    <h2>Carrinho</h2>
+                    <h2 id="my-cart">Carrinho</h2>
  
                     <ul>
                         {   
