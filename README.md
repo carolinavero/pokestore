@@ -45,7 +45,7 @@ $ npm start
 A aplicação estará disponível na rota http://localhost:3000
 
 
-### Deploy da aplicação com Netlify
+## Deploy da aplicação com Netlify
 
 https://pokestore-carol.netlify.app
 
