@@ -13,7 +13,12 @@ body {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
 }
-
+.page-link {
+    color: var(--primary-color);
+}
+.pokemon-list-home {
+    min-height: 78vh;
+}
 .loading-message {
     text-align: center;
     display: flex;
@@ -192,10 +197,28 @@ body {
     margin-bottom: 1rem;
 }
 
+footer {
+    color: var(--primary-color);
+    padding: 1rem;
+    font-size:.9rem;
+}
+
+footer a {
+    color: var(--primary-color);
+}
+footer .footer-social-network svg {
+    margin: 0 5px;
+}
+
 @media(max-width: 600px) {
 
     .navbar-brand .logo {
         max-width: 100%;
+    }
+
+    .footer-social-network{ 
+        text-align: center;
+        margin-top: 1rem;
     }
     
     .cart {

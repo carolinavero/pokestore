@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
+import Footer from './components/Footer';
 
 import api from './services/api';
 import PokemonList from './components/PokemonList';
@@ -89,7 +90,7 @@ function App() {
           <Navbar search={filterPokemon}/>
         </section>
 
-          <div className="container-fluid">
+          <div className="container-fluid pokemon-list-home">
             <div className="row">
               <div className="col-xl-9 col-lg-8 col-md-8 col-sm-6 col-12">
                 <PokemonList pokemons={pokemons} />
@@ -124,6 +125,7 @@ function App() {
 
           </div>
       
+        <Footer />
         </>
       );
   }
