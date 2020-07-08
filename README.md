@@ -4,7 +4,7 @@
 
 Projeto desenvolvido no Gama Experience. Loja Online criada utilizando ReactJS e consumindo a API [PokeApi](https://pokeapi.co/).
 
-### Funcionalidades
+## Funcionalidades
 
 - Listagem de Pokémon
 - Carrinho lateral
@@ -13,7 +13,39 @@ Projeto desenvolvido no Gama Experience. Loja Online criada utilizando ReactJS e
 - Modal ao Finalizar a compra
 - Carrinho salvo no LocalStorage
 
-### Demo
+## Linguagens e libs utilizadas
 
-Link para a [Demo](https://pokestore-carol.netlify.app/)
+- React
+- React Bootstrap
+- FontAwesome
+- Axios
+
+## Como rodar a aplicação
+
+No terminal, clone o projeto
+```sh
+$ git clone https://github.com/carolinavero/pokestore
+```
+
+Entre na pasta do projeto
+```sh
+$ cd pokestore
+```
+
+Instale as dependências
+```sh
+$ npm install
+```
+
+Execute a aplicação
+```sh
+$ npm start
+```
+
+A aplicação estará disponível na rota http://localhost:3000
+
+
+### Deploy da aplicação com Netlify
+
+https://pokestore-carol.netlify.app
 
