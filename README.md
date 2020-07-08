@@ -10,6 +10,7 @@ Projeto desenvolvido no Gama Experience. Loja Online criada utilizando ReactJS e
 - Resumo do Carrinho
 - Barra de Busca
 - Modal ao Finalizar a compra
+- Carrinho salvo no LocalStorage
 
 ### Demo
 
